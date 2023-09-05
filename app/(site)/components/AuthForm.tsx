@@ -5,6 +5,8 @@ import React, { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
 import {BsGithub,BsGoogle} from 'react-icons/bs'
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 
 
@@ -36,6 +38,9 @@ const AuthForm = () => {
 
     if (variant === "REGISTER") {
       //Todo axios register
+      axios.post('/api/register',data)
+      .catch(()=>toast.error('Something went wrong!'))
+
     } else {
       //todo nextauth signin
     }
